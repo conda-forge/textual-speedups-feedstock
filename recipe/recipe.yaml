@@ -17,7 +17,7 @@ source:
   sha256: 72cf0f7bdeede015367b59b70bcf724ba2c3080a8641ebc5eb94b36ad1536824
 
 build:
-  number: 0
+  number: 1
   script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -29,9 +29,9 @@ requirements:
     - ${{ compiler("rust") }}
     - cargo-bundle-licenses
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
+      then:
+        - python
+        - cross-python_${{ target_platform }}
   host:
     - python
     - pip
