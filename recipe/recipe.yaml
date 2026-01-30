@@ -32,6 +32,7 @@ requirements:
       then:
         - python
         - cross-python_${{ target_platform }}
+        - maturin >=1.8,<2.0
   host:
     - python
     - pip
